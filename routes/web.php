@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/color', function () {
-    return view('color-picker');
-});
-
 Route::post('/fireEvent', function (Request $request) {
 
     PublicEvent::dispatch($request->color);
@@ -28,8 +24,6 @@ Route::post('/fireEvent', function (Request $request) {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-
 
 Route::middleware('auth')->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
